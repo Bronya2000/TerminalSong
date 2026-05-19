@@ -33,12 +33,8 @@
     .world-img {
       width: 100%;
       height: 140px;
-      border: 2px dashed #8b5cf6;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #8b5cf6;
-      margin-bottom: 15px;
+      object-fit: cover;
+      border-radius: 6px;
     }
     .world-card h3 {
       color: #f7ba00;
@@ -73,7 +69,7 @@
 <body>
 <audio id="bgm" loop preload="auto">
   <source src="music2.mp3" type="audio/mpeg">
-</audio>
+
 
 <div class="container">
   <h1 class="glitch" data-text="WORLDVIEW">WORLDVIEW</h1>
@@ -86,21 +82,21 @@
 
   <div class="world-card-box">
     <div class="world-card">
-      <div class="world-img">【图片插入位置】</div>
+      <img src="anqu.png" class="world-img" alt="暗区世界观">
       <h3>暗区世界观</h3>
       <p>势力冲突与无秩序战场</p>
       <a href="world-dark.html">进入查看</a>
     </div>
 
     <div class="world-card">
-      <div class="world-img">【图片插入位置】</div>
+      <img src="yuanchuang.png" class="world-img" alt="原创世界观">
       <h3>原创世界观</h3>
       <p>后病毒时代的城市生存</p>
       <a href="world-original.html">进入查看</a>
     </div>
 
     <div class="world-card">
-      <div class="world-img">【图片插入位置】</div>
+      <img src="saibo.png" class="world-img" alt="赛博朋克世界观">
       <h3>赛博朋克世界观</h3>
       <p>高端科技与义体改造</p>
       <a href="world-cyber.html">进入查看</a>
