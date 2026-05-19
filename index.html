@@ -5,14 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png">
+  <style>
+    /* 顶部导航条 */
+    .top-bar {
+      width: 100%;
+      height: 60px;
+      background: url('topbar.png') center/cover no-repeat;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 30px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    }
+
+    .icon-group {
+      display: flex;
+      gap: 20px;
+    }
+
+    .icon-item {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .icon-item img.icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* 悬停弹出图 */
+    .hover-card {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      border: 1px solid #0ff;
+      box-shadow: 0 0 10px #0ff;
+      display: none;
+      object-fit: cover;
+      z-index: 9999;
+    }
+
+    .icon-item:hover .hover-card {
+      display: block;
+    }
+
+    body {
+      padding-top: 80px;
+    }
+  </style>
 </head>
 <body>
 
+<!-- 顶部导航条 + 社交图标 -->
+<div class="top-bar">
+  <div class="icon-group">
+    <!-- B站 -->
+    <div class="icon-item">
+      <img class="icon" src="icon-bilibili.png">
+      <img class="hover-card" src="hover-bilibili.png">
+    </div>
+    <!-- 微信 -->
+    <div class="icon-item">
+      <img class="icon" src="icon-wechat.png">
+      <img class="hover-card" src="hover-wechat.png">
+    </div>
+    <!-- QQ -->
+    <div class="icon-item">
+      <img class="icon" src="icon-qq.png">
+      <img class="hover-card" src="hover-qq.png">
+    </div>
+  </div>
+</div>
+
 <audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
-</audio>
+
 
 <div class="container">
   <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
@@ -31,9 +112,7 @@
 <script>
 document.addEventListener("click", function() {
   let audio = document.getElementById("bgm");
-  if (audio.paused) {
-    audio.play();
-  }
+  if (audio.paused) audio.play();
 });
 </script>
 
