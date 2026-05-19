@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CYBERPUNK 2037</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.png">
-  <style>
-    .topBar{
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 48px;
-      background-color: #f7ba00;
-      line-height: 48px;
-      padding-left: 25px;
-      z-index: 100;
-    }
-    .topBar a{
-      color: #000;
-      font-size: 17px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.2s;
-    }
-    .topBar a:hover{
-      color: #444;
-    }
-    body{
-      margin: 0;
-      padding-top: 55px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CYBERPUNK 2037</title>
+<style>
+/* 只写顶部黄条，不引用任何外部css */
+body {margin:0; padding-top:50px; background:#000; color:#fff; text-align:center;}
+.topBar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:48px;
+  background:#f7ba00;
+  line-height:48px;
+  padding-left:25px;
+}
+.topBar a{
+  color:#000;
+  font-size:18px;
+  font-weight:bold;
+  text-decoration:none;
+}
+</style>
 </head>
 <body>
 
@@ -40,31 +31,15 @@
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
 
-<!-- 补全audio闭合标签 -->
-<audio id="bgm" loop preload="auto">
-  <source src="music.mp3" type="audio/mpeg">
+<h1>CYBERPUNK 2037</h1>
+<h2>Jarvis · Terminal Song</h2>
 
-
-<div class="container">
-  <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
-  <h2 class="subglitch">Jarvis · Terminal Song</h2>
-  <div class="nav">
-    <a href="character.html" class="btn">CHARACTER</a>
-    <a href="background.html" class="btn">BACKGROUND</a>
-    <a href="weapon.html" class="btn">WEAPON</a>
-    <a href="collection.html" class="btn">COLLECTION</a>
-  </div>
-  <div class="footer">
-    <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
-  </div>
+<div>
+<a href="character.html">CHARACTER</a>
+<a href="background.html">BACKGROUND</a>
+<a href="weapon.html">WEAPON</a>
+<a href="collection.html">COLLECTION</a>
 </div>
-
-<script>
-document.addEventListener("click",function(){
-  const audio = document.getElementById("bgm");
-  if(audio.paused) audio.play();
-})
-</script>
 
 </body>
 </html>
