@@ -3,30 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BACKGROUND</title>
+  <title>BACKGROUND | CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .world-card-box {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .world-card {
+      width: 260px;
+      background: rgba(0,0,0,0.4);
+      border: 2px solid #00ffff;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px #00ffff;
+      transition: 0.3s;
+    }
+    .world-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00ffff;
+    }
+    .world-img {
+      width: 100%;
+      height: 140px;
+      border: 2px dashed #8b5cf6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #8b5cf6;
+      margin-bottom: 15px;
+    }
+    .world-card h3 {
+      color: #f7ba00;
+      margin-bottom: 10px;
+    }
+    .world-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: 1px solid #00ffff;
+      color: #00ffff;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .world-card a:hover {
+      background: #00ffff;
+      color: #000;
+    }
+    .core-text {
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: left;
+      line-height: 1.7;
+      color: #eee;
+      background: rgba(0,0,0,0.3);
+      padding: 25px;
+      border-left: 4px solid #00ffff;
+      margin-bottom: 30px;
+    }
+  </style>
 </head>
 <body>
-
 <audio id="bgm" loop preload="auto">
   <source src="music2.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
-  <h1 class="glitch" data-text="BACKGROUND">BACKGROUND</h1>
+  <h1 class="glitch" data-text="WORLDVIEW">WORLDVIEW</h1>
   <h2 class="subglitch">世界观</h2>
+
+  <div class="core-text">
+    <h3 style="color:#00ffff;margin-bottom:10px;">一、总体核心世界观</h3>
+    <p>以现实世界为基底，融合暗区冲突、赛博朋克义体改造元素，故事起源于2030年。彼时世界呈现“破败与高端并存”的矛盾面貌——科技（尤其是义体改造、武器制造）高度发达，但因各大公司与势力的地区冲突，引发致命病毒泄露，最终酿成全球性灾害。病毒肆虐后，世界秩序崩塌，部分区域沦为无政府状态，城市实行区域化封闭管理，生存成为核心主题，同时高端科技仍在畸形发展，义体改造成为部分人提升生存能力的选择。</p>
+  </div>
+
+  <div class="world-card-box">
+    <div class="world-card">
+      <div class="world-img">【图片插入位置】</div>
+      <h3>暗区世界观</h3>
+      <p>势力冲突与无秩序战场</p>
+      <a href="world-dark.html">进入查看</a>
+    </div>
+
+    <div class="world-card">
+      <div class="world-img">【图片插入位置】</div>
+      <h3>原创世界观</h3>
+      <p>后病毒时代的城市生存</p>
+      <a href="world-original.html">进入查看</a>
+    </div>
+
+    <div class="world-card">
+      <div class="world-img">【图片插入位置】</div>
+      <h3>赛博朋克世界观</h3>
+      <p>高端科技与义体改造</p>
+      <a href="world-cyber.html">进入查看</a>
+    </div>
+  </div>
+
+  <br><br>
   <a href="index.html" class="btn">BACK TO HOME</a>
 </div>
 
 <script>
-document.addEventListener("click", function() {
-  let audio = document.getElementById("bgm");
-  if (audio.paused) {
-    audio.play();
-  }
+document.addEventListener("click", function(){
+  let a = document.getElementById("bgm");
+  if(a.paused) a.play();
 });
 </script>
-
 </body>
 </html>
