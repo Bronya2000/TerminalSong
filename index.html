@@ -5,50 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png">
   <style>
-    .top-yellow-bar {
-      width: 100%;
-      height: 50px;
-      background: #f7ba00;
+    /* 顶部黄色导航条 */
+    .topBar{
       position: fixed;
       top: 0;
       left: 0;
-      display: flex;
-      align-items: center;
-      padding: 0 30px;
-      z-index: 999;
+      width: 100%;
+      height: 48px;
+      background-color: #f7ba00;
+      line-height: 48px;
+      padding-left: 25px;
+      z-index: 100;
     }
-    .top-text {
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
+    .topBar a{
       color: #000;
+      font-size: 17px;
+      font-weight: bold;
       text-decoration: none;
-      letter-spacing: 2px;
-      transition: all 0.2s ease;
     }
-    .top-text:hover {
-      color: #333;
-    }
-    .top-text:active {
-      transform: scale(0.95);
-    }
-    body {
+    /* 主体下移 彻底不被挡住 */
+    body{
       margin: 0;
-      padding-top: 60px;
-    }
-    /* 关键：给container也加上上边距，确保不被黄条挡住 */
-    .container {
-      margin-top: 20px;
+      padding-top: 55px !important;
     }
   </style>
 </head>
 <body>
 
-<div class="top-yellow-bar">
-  <a class="top-text" href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
+<!-- 顶部黄条 -->
+<div class="topBar">
+  <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
 
 <audio id="bgm" loop preload="auto">
@@ -70,12 +58,10 @@
 </div>
 
 <script>
-document.addEventListener("click", function() {
-  let audio = document.getElementById("bgm");
-  if (audio.paused) {
-    audio.play();
-  }
-});
+document.addEventListener("click",function(){
+  let audio=document.getElementById("bgm");
+  if(audio.paused)audio.play();
+})
 </script>
 
 </body>
