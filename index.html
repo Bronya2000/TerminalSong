@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <div class="container">
     <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
     <h2 class="subglitch">Jarvis · Terminal Song</h2>
@@ -24,6 +25,18 @@
     </div>
   </div>
 
+  <!-- 全局单首自定义音乐 跳转页面不停播 -->
+  <audio id="globalMusic" loop hidden>
+    <source src="music.mp3" type="audio/mpeg">
+  
+
   <script src="script.js"></script>
+  <script>
+    window.addEventListener('click',function(){
+      let aud = document.getElementById('globalMusic');
+      if(aud.paused) aud.play();
+    })
+  </script>
+
 </body>
 </html>
