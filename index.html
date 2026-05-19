@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png">
   <style>
-    /* 顶部纯黄导航条 无任何图片 */
     .top-yellow-bar {
       width: 100%;
       height: 50px;
@@ -37,14 +36,17 @@
       transform: scale(0.95);
     }
     body {
-      padding-top: 60px;
       margin: 0;
+      padding-top: 60px;
+    }
+    /* 关键：给container也加上上边距，确保不被黄条挡住 */
+    .container {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
 
-<!-- 顶部黄色导航条 -->
 <div class="top-yellow-bar">
   <a class="top-text" href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
