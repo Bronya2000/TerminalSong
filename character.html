@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARACTER</title>
+  <title>CHARACTER | CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<audio id="bgm" loop>
+<audio id="bgm" loop preload="auto">
   <source src="music2.mp3" type="audio/mpeg">
-</audio>
+
 
 <div class="container">
   <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
@@ -20,11 +19,12 @@
 </div>
 
 <script>
-document.addEventListener("click", () => {
-  let a = document.getElementById("bgm");
-  if (a.paused) a.play();
+document.addEventListener("click", function() {
+  let audio = document.getElementById("bgm");
+  if (audio.paused) {
+    audio.play();
+  }
 });
 </script>
-
 </body>
 </html>
