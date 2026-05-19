@@ -12,22 +12,23 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
+  overflow-x: hidden;
 }
 
 .container {
   text-align: center;
   padding: 2rem;
-  width: 100%;
   max-width: 900px;
+  width: 100%;
 }
 
 .glitch {
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: bold;
   text-transform: uppercase;
   position: relative;
   color: #fff;
-  letter-spacing: 8px;
+  letter-spacing: 10px;
   margin-bottom: 20px;
 }
 
@@ -44,31 +45,74 @@ body {
 .glitch::before {
   left: 2px;
   text-shadow: -2px 0 #ff00ff;
+  animation: glitch-1 2s infinite linear alternate-reverse;
 }
 
 .glitch::after {
   left: -2px;
   text-shadow: -2px 0 #00ffff;
+  animation: glitch-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-1 {
+  0% { clip: rect(42px, 9999px, 44px, 0); }
+  20% { clip: rect(12px, 9999px, 59px, 0); }
+  100% { clip: rect(45px, 9999px, 98px, 0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  20% { clip: rect(52px, 9999px, 74px, 0); }
+  100% { clip: rect(89px, 9999px, 85px, 0); }
 }
 
 .subglitch {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: #f7ba00;
+  text-shadow: 0 0 5px #f7ba00, 0 0 20px #f7ba00;
   margin-bottom: 40px;
 }
 
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
 .btn {
-  display: inline-block;
   padding: 12px 30px;
   border: 2px solid #00ffff;
   background: transparent;
   color: #00ffff;
   font-size: 1rem;
+  text-transform: uppercase;
   text-decoration: none;
+  letter-spacing: 2px;
   transition: 0.3s;
+  box-shadow: 0 0 10px #00ffff;
 }
 
 .btn:hover {
   background: #00ffff;
   color: #000;
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+
+.footer {
+  margin-top: 60px;
+  color: #888;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .glitch {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }
