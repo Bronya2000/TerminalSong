@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CYBERPUNK 2037</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png">
   <style>
+    *{margin:0;padding:0;box-sizing:border-box;text-decoration:none;}
+    body{
+      background: #050510;
+      background-image: linear-gradient(rgba(0,20,40,0.8),rgba(0,0,20,0.9));
+      color:#fff;
+      padding-top:48px;
+      font-family:"微软雅黑",sans-serif;
+    }
     /* 顶部黄色导航条 */
     .topBar{
       position: fixed;
@@ -23,17 +30,54 @@
       color: #000;
       font-size: 17px;
       font-weight: bold;
-      text-decoration: none;
     }
-    /* 主体下移 彻底不被挡住 */
-    body{
-      margin: 0;
-      padding-top: 55px !important;
+    /* 主体容器居中 */
+    .container{
+      width:100%;
+      min-height:90vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:30px;
+    }
+    /* 故障文字核心样式 */
+    .glitch{
+      font-size:55px;
+      color:#0ff;
+      text-shadow:0 0 10px #0ff,0 0 20px #00aaff;
+      position:relative;
+    }
+    .subglitch{
+      color:#f7ba00;
+      font-size:22px;
+      letter-spacing:3px;
+    }
+    /* 导航按钮 */
+    .nav{display:flex;gap:25px;margin-top:20px;}
+    .btn{
+      padding:12px 28px;
+      border:1px solid #0ff;
+      color:#0ff;
+      font-weight:bold;
+      transition:0.3s;
+      letter-spacing:2px;
+    }
+    .btn:hover{
+      background:#0ff;
+      color:#000;
+      box-shadow:0 0 15px #0ff;
+    }
+    .footer{
+      position:absolute;
+      bottom:30px;
+      color:#888;
+      font-size:14px;
+      letter-spacing:1px;
     }
   </style>
 </head>
 <body>
-
 <!-- 顶部黄条 -->
 <div class="topBar">
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
@@ -58,11 +102,14 @@
 </div>
 
 <script>
-document.addEventListener("click",function(){
-  let audio=document.getElementById("bgm");
-  if(audio.paused)audio.play();
+const audio = document.getElementById("bgm");
+let isPlay = false;
+document.addEventListener("click",()=>{
+  if(!isPlay){
+    audio.play();
+    isPlay = true;
+  }
 })
 </script>
-
 </body>
 </html>
