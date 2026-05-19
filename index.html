@@ -6,25 +6,45 @@
   <title>CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* 旋转三角图腾样式 */
+    .tri-icon{
+      position:fixed;
+      right:40px;
+      bottom:40px;
+      width:120px;
+      height:120px;
+      z-index:5;
+      animation:round 12s linear infinite;
+      filter:drop-shadow(0 0 12px #00e5ff);
+    }
+    @keyframes round{
+      from{transform:rotate(0deg);}
+      to{transform:rotate(360deg);}
+    }
+  </style>
 </head>
 <body>
 
-<!-- ✅ 全局隐藏音乐（按钮完全看不见） -->
+<!-- 旋转三角形图腾 -->
+<svg class="tri-icon" viewBox="0 0 100 100" fill="none">
+  <path d="M50 10 L90 85 L10 85 Z" stroke="#00e5ff" stroke-width="3" fill="transparent"/>
+  <path d="M50 25 L75 70 L25 70 Z" stroke="#8b5cf6" stroke-width="2" fill="transparent"/>
+</svg>
+
 <audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
-</audio>
+
 
 <div class="container">
   <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
   <h2 class="subglitch">Jarvis · Terminal Song</h2>
-
   <div class="nav">
     <a href="character.html" class="btn">CHARACTER</a>
     <a href="background.html" class="btn">BACKGROUND</a>
     <a href="weapon.html" class="btn">WEAPON</a>
     <a href="collection.html" class="btn">COLLECTION</a>
   </div>
-
   <div class="footer">
     <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
   </div>
@@ -32,7 +52,6 @@
 
 <script src="script.js"></script>
 <script>
-// ✅ 点击页面任意位置 播放音乐（完全隐藏，无按钮）
 document.addEventListener("click", function() {
   let audio = document.getElementById("bgm");
   if (audio.paused) {
