@@ -3,29 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARACTER</title>
+  <title>CHARACTER | CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png">
+  <style>
+    .char-wrap {max-width:900px;margin:40px auto;text-align:center;}
+    .camp-title {color:#f7ba00;font-size:1.8rem;margin:30px 0 15px;text-shadow:0 0 8px #f7ba00;}
+    .char-list {display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-bottom:40px;}
+    .char-item {background:rgba(0,0,0,0.4);border:2px solid #00ffff;padding:12px 20px;border-radius:8px;color:#00ffff;cursor:pointer;transition:0.3s;}
+    .char-item:hover {background:#00ffff;color:#000;box-shadow:0 0 15px #00ffff;}
+    .modal {display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);justify-content:center;align-items:center;z:999;}
+    .modal-box {background:#0b0427;border:2px solid #f7ba00;padding:30px;border-radius:12px;max-width:600px;color:#eee;line-height:1.8;}
+    .modal-box h3 {color:#f7ba00;margin-bottom:15px;}
+    .close {color:#f7ba00;float:right;font-size:1.5rem;cursor:pointer;}
+  </style>
 </head>
 <body>
 
 <audio id="bgm" loop preload="auto">
-  <source src="music2.mp3" type="audio/mpeg">
-</audio>
+  <source src="music.mp3" type="audio/mpeg">
+
 
 <div class="container">
   <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
-  <h2 class="subglitch">角色系统</h2>
+  <h2 class="subglitch">
+    <a href="character.html" style="color:#f7ba00;text-shadow:0 0 5px #f7ba00;text-decoration:none;">角色介绍</a>
+  </h2>
+
+  <div class="char-wrap">
+
+    <!-- 中立阵营 -->
+    <h3 class="camp-title">中立阵营</h3>
+    <div class="char-list">
+      <div class="char-item" onclick="showModal('洛','主角的亲友（最早剧情核心人物），性格纯善。温柔纯善、是主角心中的“白月光”，在末日混乱中惨死，成为了牺牲品。')">洛</div>
+      <div class="char-item" onclick="showModal('班德·卡萨克','马克西绿洲首领，在和坂枭军队混战中被俘虏，口中有流窜ai的情报。')">班德·卡萨克</div>
+    </div>
+
+    <!-- 特维拉阵营 -->
+    <h3 class="camp-title">特维拉阵营</h3>
+    <div class="char-list">
+      <div class="char-item" onclick="showModal('坂枭华子（重构天使）','原坂枭华子，科伦高级军士长，园区实际管理者之一（坂枭授权其协助主角），科伦势力核心成员，坂本枭之女，在和拓斋（贾维斯·希尔德）结识过后产生好感，坂枭势力覆灭后与贾维斯逃往北方寻求希尔德家族的庇佑，后来前往南方途中被流浪者家族绑架，被做实验，后来存在于relic作为意识体存在与贾维斯体内。')">坂枭华子（重构天使）</div>
+      <div class="char-item" onclick="showModal('贾维斯·希尔德','主角，原本是一名普通高三学生，孤儿，但是身世为北方贵族后裔，拥有很强的机械能力和射击能力，曾遭背叛失去手臂。')">贾维斯·希尔德</div>
+      <div class="char-item" onclick="showModal('埃德加','主角的同伴、助手，特维拉原某研究所技术人员，曾为俄罗斯阿尔法突击队小队成员，精通信息战术和医疗救治，经验丰富的求生者。')">埃德加</div>
+      <div class="char-item" onclick="showModal('K','出身卡萨克家族，前期和主角一行人结伴同行，知晓区域势力内情，性格谨慎，在列车遇袭动乱中不幸身亡，提前印证旧势力早已衰败。')">K</div>
+      <div class="char-item" onclick="showModal('迪克文森','联络人，没人知道他在流浪者家族里有多大的势力。')">迪克文森</div>
+    </div>
+
+    <!-- 科伦阵营 -->
+    <h3 class="camp-title">科伦阵营</h3>
+    <div class="char-list">
+      <div class="char-item" onclick="showModal('坂本枭','科伦黑产帝国的土皇帝，华子生父，气场如同黑帮教父，心思极度多疑深沉，信奉宗教教义，杀伐果断不喜繁文缛节。擅长用多重手段试探人心，确认主角忠心后将整片园区与绿洲全权交付，手握大量黑暗交易资源。')">坂本枭</div>
+      <div class="char-item" onclick="showModal('坂本华子','坂枭之女，园区实际管理者之一，外形明艳火辣，穿搭极具辨识度，性格双面反差。表面娇俏暧昧主动贴近主角，实则遵从父亲命令暗中试探主角忠诚度，心思玲珑，熟悉整片园区所有人脉与布防，游走在权势与情感之间。')">坂本华子</div>
+      <div class="char-item" onclick="showModal('荒木拓斋','真实为十九岁首席执剑人，极少露面身份神秘，被北方势力半路截获，严刑逼供后全盘交代身份暗号、人脉规矩等所有信息，沦为主角替身的垫脚石。')">荒木拓斋</div>
+      <div class="char-item" onclick="showModal('凯拉·普林斯顿','科伦联络人，会根据你的实用价值来为你派发任务，后期贾维斯回归科伦的重要中间人。')">凯拉·普林斯顿</div>
+      <div class="char-item" onclick="showModal('坂本世雄','坂枭长子，对外宣称已故，实际上是坂枭的接班人，但是因为急功近利杀死了坂枭。')">坂本世雄</div>
+    </div>
+
+  </div>
+
+  <br><br>
   <a href="index.html" class="btn">BACK TO HOME</a>
+</div>
+
+<!-- 弹窗 -->
+<div id="modal" class="modal">
+  <div class="modal-box">
+    <span class="close" onclick="closeModal()">×</span>
+    <h3 id="modal-name"></h3>
+    <p id="modal-desc"></p>
+  </div>
 </div>
 
 <script>
 document.addEventListener("click", function() {
-  let audio = document.getElementById("bgm");
-  if (audio.paused) {
-    audio.play();
-  }
+  let a = document.getElementById("bgm");
+  if(a.paused) a.play();
 });
+
+function showModal(name, desc) {
+  document.getElementById("modal-name").innerText = name;
+  document.getElementById("modal-desc").innerText = desc;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
 </script>
 
 </body>
