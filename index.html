@@ -1,45 +1,72 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CYBERPUNK 2037</title>
-<style>
-/* 只写顶部黄条，不引用任何外部css */
-body {margin:0; padding-top:50px; background:#000; color:#fff; text-align:center;}
-.topBar{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:48px;
-  background:#f7ba00;
-  line-height:48px;
-  padding-left:25px;
-}
-.topBar a{
-  color:#000;
-  font-size:18px;
-  font-weight:bold;
-  text-decoration:none;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBERPUNK 2037</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png">
+  <style>
+    /* 仅添加顶部黄条 不影响任何原有内容 */
+    .top-yellow-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: #f7ba00;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      z-index: 999;
+    }
+    .top-yellow-bar a {
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    /* 让原有内容不被黄条挡住 */
+    body {
+      padding-top: 50px;
+      margin: 0;
+    }
+  </style>
 </head>
 <body>
 
-<div class="topBar">
+<!-- 只新增这一段：顶部黄条 -->
+<div class="top-yellow-bar">
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
 
-<h1>CYBERPUNK 2037</h1>
-<h2>Jarvis · Terminal Song</h2>
+<audio id="bgm" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<div>
-<a href="character.html">CHARACTER</a>
-<a href="background.html">BACKGROUND</a>
-<a href="weapon.html">WEAPON</a>
-<a href="collection.html">COLLECTION</a>
+<div class="container">
+  <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
+  <h2 class="subglitch">Jarvis · Terminal Song</h2>
+  <div class="nav">
+    <a href="character.html" class="btn">CHARACTER</a>
+    <a href="background.html" class="btn">BACKGROUND</a>
+    <a href="weapon.html" class="btn">WEAPON</a>
+    <a href="collection.html" class="btn">COLLECTION</a>
+  </div>
+  <div class="footer">
+    <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
+  </div>
 </div>
+
+<script>
+document.addEventListener("click", function() {
+  let audio = document.getElementById("bgm");
+  if (audio.paused) {
+    audio.play();
+  }
+});
+</script>
 
 </body>
 </html>
