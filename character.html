@@ -3,116 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CHARACTER</title>
+  <title>CHARACTER | CYBERPUNK 2037</title>
   <style>
     body {
       background: #0b0427;
       color: #fff;
       font-family: sans-serif;
       text-align: center;
-      padding: 50px;
+      padding: 50px 20px;
       margin: 0;
     }
     h1 {
       font-size: 3rem;
-      color: #fff;
       margin-bottom: 20px;
     }
-    h2 {
+    .sub {
       color: #f7ba00;
       font-size: 1.5rem;
       margin-bottom: 40px;
     }
-    .camp {
-      margin: 40px 0;
-    }
-    .camp h3 {
-      color: #f7ba00;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-    .char {
+    .camp-btn {
       display: inline-block;
-      background: #000;
+      background: rgba(0,0,0,0.4);
       border: 2px solid #00ffff;
-      padding: 10px 20px;
-      margin: 5px;
+      padding: 15px 30px;
+      margin: 10px;
       border-radius: 8px;
       color: #00ffff;
-      cursor: pointer;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
     }
-    .char:hover {
+    .camp-btn:hover {
       background: #00ffff;
       color: #000;
+      box-shadow: 0 0 15px #00ffff;
     }
-    .btn {
+    .btn-back {
       display: inline-block;
+      margin-top: 30px;
       padding: 12px 24px;
-      background: #00ffff;
-      color: #000;
+      border: 2px solid #00ffff;
+      color: #00ffff;
       text-decoration: none;
       border-radius: 8px;
-      margin-top: 30px;
     }
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-box {
-      background: #0b0427;
-      border: 2px solid #f7ba00;
-      padding: 30px;
-      max-width: 600px;
-      color: #eee;
-    }
-    .close {
-      color: #f7ba00;
-      float: right;
-      font-size: 20px;
-      cursor: pointer;
+    .btn-back:hover {
+      background: #00ffff;
+      color: #000;
     }
   </style>
 </head>
 <body>
 
 <h1>CHARACTER</h1>
-<h2>角色介绍</h2>
+<div class="sub">角色介绍</div>
 
-<!-- 中立阵营 -->
-<div class="camp">
-  <h3>中立阵营</h3>
-  <div class="char" onclick="alert('洛：主角的亲友，温柔纯善，末日中惨死。')">洛</div>
-  <div class="char" onclick="alert('班德·卡萨克：马克西绿洲首领，被俘，有流窜ai情报。')">班德·卡萨克</div>
-</div>
+<a href="char-list.html?camp=中立阵营" class="camp-btn">中立阵营</a>
+<br>
+<a href="char-list.html?camp=特维拉阵营" class="camp-btn">特维拉阵营</a>
+<br>
+<a href="char-list.html?camp=科伦阵营" class="camp-btn">科伦阵营</a>
 
-<!-- 特维拉阵营 -->
-<div class="camp">
-  <h3>特维拉阵营</h3>
-  <div class="char" onclick="alert('坂枭华子（重构天使）：科伦军士长，坂本枭之女，意识体存在于贾维斯体内。')">坂枭华子（重构天使）</div>
-  <div class="char" onclick="alert('贾维斯·希尔德：主角，高三学生，贵族后裔，失去手臂。')">贾维斯·希尔德</div>
-  <div class="char" onclick="alert('埃德加：主角同伴，前突击队成员，精通医疗和战术。')">埃德加</div>
-  <div class="char" onclick="alert('K：卡萨克家族，列车动乱中身亡。')">K</div>
-  <div class="char" onclick="alert('迪克文森：流浪者家族联络人，势力未知。')">迪克文森</div>
-</div>
-
-<!-- 科伦阵营 -->
-<div class="camp">
-  <h3>科伦阵营</h3>
-  <div class="char" onclick="alert('坂本枭：科伦黑产帝国首领，黑帮教父。')">坂本枭</div>
-  <div class="char" onclick="alert('坂本华子：坂枭之女，双面性格，试探主角。')">坂本华子</div>
-  <div class="char" onclick="alert('荒木拓斋：北方执剑人，沦为替身。')">荒木拓斋</div>
-  <div class="char" onclick="alert('凯拉·普林斯顿：科伦联络人，派发任务。')">凯拉·普林斯顿</div>
-  <div class="char" onclick="alert('坂本世雄：坂枭长子，杀死坂枭。')">坂本世雄</div>
-</div>
-
-<a href="index.html" class="btn">BACK TO HOME</a>
+<br><br>
+<a href="index.html" class="btn-back">BACK TO HOME</a>
 
 </body>
 </html>
