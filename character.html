@@ -1,16 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>CHARACTER | CYBERPUNK 2037</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHARACTER</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="container">
-    <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
-    <h2 class="subglitch">角色系统</h2>
-    <a href="index.html" class="btn">BACK TO HOME</a>
-  </div>
+
+<audio id="bgm" loop>
+  <source src="music2.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
+  <h2 class="subglitch">角色系统</h2>
+  <a href="index.html" class="btn">BACK TO HOME</a>
+</div>
+
+<script>
+document.addEventListener("click", () => {
+  let a = document.getElementById("bgm");
+  if (a.paused) a.play();
+});
+</script>
+
 </body>
 </html>
