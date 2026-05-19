@@ -4,48 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>角色列表</title>
+  <link rel="icon" href="favicon.png">
   <style>
-    body {
-      background: #0b0427;
-      color: #fff;
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px 20px;
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background: #050508;
+      color: #e5e5e5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
     }
     h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
       color: #f7ba00;
-      font-size: 2rem;
-      margin-bottom: 30px;
+      text-shadow: 0 0 8px rgba(247, 186, 0, 0.4);
+      letter-spacing: 3px;
+      margin-bottom: 40px;
     }
-    .char-btn {
-      display: inline-block;
-      background: rgba(0,0,0,0.4);
-      border: 2px solid #00ffff;
-      padding: 12px 20px;
-      margin: 8px;
-      border-radius: 8px;
+    .char-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      max-width: 700px;
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    .char-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .char-card:hover {
+      background: rgba(0, 255, 255, 0.08);
+      border-color: rgba(0, 255, 255, 0.6);
+      box-shadow: 0 0 16px rgba(0, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    .char-name {
+      font-size: 1rem;
+      font-weight: 500;
       color: #00ffff;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .char-btn:hover {
-      background: #00ffff;
-      color: #000;
-      box-shadow: 0 0 15px #00ffff;
     }
     .btn-back {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 24px;
-      border: 2px solid #00ffff;
-      color: #00ffff;
-      text-decoration: none;
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid rgba(0, 255, 255, 0.4);
       border-radius: 8px;
+      color: #00ffff;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
     .btn-back:hover {
-      background: #00ffff;
-      color: #000;
+      background: rgba(0, 255, 255, 0.1);
+      border-color: rgba(0, 255, 255, 0.8);
+      box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
     }
     .modal {
       display: none;
@@ -54,29 +79,36 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0, 0, 0, 0.85);
       justify-content: center;
       align-items: center;
       z-index: 999;
     }
     .modal-box {
-      background: #0b0427;
-      border: 2px solid #f7ba00;
-      padding: 30px;
+      background: #0a0a12;
+      border: 1px solid rgba(247, 186, 0, 0.5);
       border-radius: 12px;
-      max-width: 600px;
-      color: #eee;
-      line-height: 1.8;
+      padding: 32px;
+      max-width: 550px;
+      color: #e5e5e5;
+      line-height: 1.9;
     }
-    .modal-box h3 {
+    .modal-name {
+      font-size: 1.6rem;
+      font-weight: 600;
       color: #f7ba00;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 6px rgba(247, 186, 0, 0.3);
     }
     .close {
-      color: #f7ba00;
       float: right;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
+      color: #f7ba00;
       cursor: pointer;
+      transition: 0.2s;
+    }
+    .close:hover {
+      color: #ffd040;
     }
   </style>
 </head>
@@ -84,16 +116,15 @@
 
 <h1 id="camp-name"></h1>
 
-<div id="char-container"></div>
+<div class="char-grid" id="char-container"></div>
 
-<br><br>
-<a href="character.html" class="btn-back">返回阵营列表</a>
+<a href="character.html" class="btn-back">返回阵营</a>
 
-<div id="modal" class="modal">
+<div class="modal" id="modal">
   <div class="modal-box">
     <span class="close" onclick="closeModal()">×</span>
-    <h3 id="modal-name"></h3>
-    <p id="modal-desc"></p>
+    <div class="modal-name" id="modal-name"></div>
+    <div id="modal-desc"></div>
   </div>
 </div>
 
@@ -124,11 +155,11 @@ document.getElementById("camp-name").innerText = camp;
 
 const container = document.getElementById("char-container");
 data[camp].forEach(item => {
-  const a = document.createElement("a");
-  a.className = "char-btn";
-  a.innerText = item.name;
-  a.onclick = () => showModal(item.name, item.desc);
-  container.appendChild(a);
+  const card = document.createElement("div");
+  card.className = "char-card";
+  card.innerHTML = `<div class="char-name">${item.name}</div>`;
+  card.onclick = () => showModal(item.name, item.desc);
+  container.appendChild(card);
 });
 
 function showModal(name, desc) {
@@ -136,7 +167,6 @@ function showModal(name, desc) {
   document.getElementById("modal-desc").innerText = desc;
   document.getElementById("modal").style.display = "flex";
 }
-
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
