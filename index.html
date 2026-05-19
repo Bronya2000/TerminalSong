@@ -9,6 +9,11 @@
 </head>
 <body>
 
+<!-- ✅ 全局隐藏音乐（按钮完全看不见） -->
+<audio id="bgm" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
 <div class="container">
   <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
   <h2 class="subglitch">Jarvis · Terminal Song</h2>
@@ -20,18 +25,21 @@
     <a href="collection.html" class="btn">COLLECTION</a>
   </div>
 
-  <!-- 看得见、点得动、100%能播放的音乐按钮 -->
-  <div style="margin: 25px 0;">
-    <audio id="bgm" controls>
-      <source src="music.mp3" type="audio/mpeg">
-    </audio>
-  </div>
-
   <div class="footer">
     <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
   </div>
 </div>
 
 <script src="script.js"></script>
+<script>
+// ✅ 点击页面任意位置 播放音乐（完全隐藏，无按钮）
+document.addEventListener("click", function() {
+  let audio = document.getElementById("bgm");
+  if (audio.paused) {
+    audio.play();
+  }
+});
+</script>
+
 </body>
 </html>
