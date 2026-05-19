@@ -6,13 +6,19 @@
 }
 
 body {
-  background: linear-gradient(135deg, #0d0221, #2d0b5a, #50097c);
+  background: #0b0427;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   overflow-x: hidden;
+  /* 静态网格背景 */
+  background-image: 
+    linear-gradient(rgba(0, 180, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 255, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
 }
 
 .container {
@@ -20,6 +26,8 @@ body {
   padding: 2rem;
   max-width: 900px;
   width: 100%;
+  position: relative;
+  z-index: 10;
 }
 
 .glitch {
