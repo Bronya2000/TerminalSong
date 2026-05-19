@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHARACTER | CYBERPUNK 2037</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<audio id="bgm" loop preload="auto">
-  <source src="music2.mp3" type="audio/mpeg">
+  <!-- 隐藏音频，用 music2.mp3 -->
+  <audio id="bgm" loop preload="auto">
+    <source src="music2.mp3" type="audio/mpeg">
+  
 
-<div class="container">
-  <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
-  <h2 class="subglitch">角色系统</h2>
-  <a href="index.html" class="btn">BACK TO HOME</a>
-</div>
-<script>
-document.addEventListener("click", function() {
-  let audio = document.getElementById("bgm");
-  if (audio.paused) audio.play();
-});
-</script>
+  <!-- 核心容器：必须要有，不然内容无法居中显示 -->
+  <div class="container">
+    <h1 class="glitch" data-text="CHARACTER">CHARACTER</h1>
+    <h2 class="subglitch">角色系统</h2>
+    <a href="index.html" class="btn">BACK TO HOME</a>
+  </div>
+
+  <script>
+    document.addEventListener("click", function() {
+      let audio = document.getElementById("bgm");
+      if (audio.paused) {
+        audio.play();
+      }
+    });
+  </script>
 </body>
 </html>
