@@ -1,4 +1,3 @@
-// 轻微屏幕抖动效果（赛博朋克感）
 document.addEventListener('DOMContentLoaded', () => {
   setInterval(() => {
     document.body.style.transform = 'translateX(1px)';
