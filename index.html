@@ -20,23 +20,18 @@
       <a href="collection.html" class="btn">COLLECTION</a>
     </div>
 
+    <!-- 音乐播放控件 -->
+    <div style="margin:30px 0;">
+      <audio id="globalMusic" controls loop>
+        <source src="music.mp3" type="audio/mpeg">
+      
+    </div>
+
     <div class="footer">
       <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
     </div>
   </div>
 
-  <!-- 全局单首自定义音乐 跳转页面不停播 -->
-  <audio id="globalMusic" loop hidden>
-    <source src="music.mp3" type="audio/mpeg">
-  
-
   <script src="script.js"></script>
-  <script>
-    window.addEventListener('click',function(){
-      let aud = document.getElementById('globalMusic');
-      if(aud.paused) aud.play();
-    })
-  </script>
-
 </body>
 </html>
