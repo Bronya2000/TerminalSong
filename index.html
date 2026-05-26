@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png">
   <style>
-    /* 顶部黄条 */
     .top-yellow-bar {
       position: fixed;
       top: 0;
@@ -32,56 +31,50 @@
       margin: 0;
     }
 
-    /* ========== 留言板样式 ========== */
+    /* 留言板样式 简约兼容版 */
     .msg-box {
       width: 90%;
       max-width: 600px;
-      margin: 40px auto;
-      padding: 20px;
-      border: 1px solid #666;
-      border-radius: 8px;
+      margin: 30px auto;
+      padding: 15px;
+      box-sizing: border-box;
     }
     .msg-title {
       font-size: 20px;
       text-align: center;
-      margin-bottom: 15px;
+      margin: 0 0 15px;
       font-family: 'Rajdhani', sans-serif;
     }
     .input-area {
       display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
+      gap: 8px;
+      margin-bottom: 15px;
     }
     #msgInput {
       flex: 1;
-      padding: 8px 12px;
-      border: 1px solid #999;
-      border-radius: 4px;
-      outline: none;
+      padding: 8px;
+      border: 1px solid #ccc;
     }
     #sendBtn {
-      padding: 8px 18px;
+      padding: 8px 16px;
       background: #f7ba00;
       border: none;
       cursor: pointer;
       font-weight: bold;
-      border-radius: 4px;
     }
     .msg-list {
-      min-height: 120px;
-      border-top: 1px solid #999;
-      padding-top: 15px;
+      min-height: 100px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
     }
     .msg-item {
-      padding: 6px 0;
-      border-bottom: 1px dashed #444;
+      padding: 4px 0;
       word-break: break-all;
     }
   </style>
 </head>
 <body>
 
-<!-- 顶部黄条 -->
 <div class="top-yellow-bar">
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
@@ -100,11 +93,11 @@
     <a href="collection.html" class="btn">COLLECTION</a>
   </div>
 
-  <!-- 留言板区域 -->
+  <!-- 留言区域 -->
   <div class="msg-box">
     <div class="msg-title">留言区</div>
     <div class="input-area">
-      <input type="text" id="msgInput" placeholder="输入留言内容...">
+      <input type="text" id="msgInput" placeholder="请输入留言...">
       <button id="sendBtn">发送</button>
     </div>
     <div class="msg-list" id="msgList"></div>
@@ -116,52 +109,54 @@
 </div>
 
 <script>
-// 原有背景音乐代码
+// 背景音乐
 document.addEventListener("click", function() {
-  let audio = document.getElementById("bgm");
+  const audio = document.getElementById("bgm");
   if (audio.paused) {
     audio.play();
   }
 });
 
-// ========== 留言功能 ==========
+// 留言功能
 const msgInput = document.getElementById('msgInput');
 const sendBtn = document.getElementById('sendBtn');
 const msgList = document.getElementById('msgList');
 
-// 读取本地存储留言
-function loadMsg() {
-  let data = localStorage.getItem('cyberMsg') || '[]';
-  let arr = JSON.parse(data);
+// 读取本地留言
+function renderMsg() {
+  let msgData = localStorage.getItem('msgData');
+  let msgArr = msgData ? JSON.parse(msgData) : [];
   msgList.innerHTML = '';
-  arr.forEach(item => {
-    let div = document.createElement('div');
-    div.className = 'msg-item';
-    div.innerText = item;
-    msgList.appendChild(div);
+  msgArr.forEach(function(text) {
+    let item = document.createElement('div');
+    item.className = 'msg-item';
+    item.innerText = text;
+    msgList.appendChild(item);
   });
 }
 
-// 初始化加载留言
-loadMsg();
+// 页面初始化加载留言
+renderMsg();
 
-// 发送留言
-sendBtn.addEventListener('click', function() {
-  let val = msgInput.value.trim();
-  if(!val) return;
+// 点击发送
+sendBtn.onclick = function() {
+  let content = msgInput.value.trim();
+  if (content === '') return;
 
-  let data = JSON.parse(localStorage.getItem('cyberMsg') || '[]');
-  data.push(val);
-  localStorage.setItem('cyberMsg', JSON.stringify(data));
+  let msgArr = localStorage.getItem('msgData') ? JSON.parse(localStorage.getItem('msgData')) : [];
+  msgArr.push(content);
+  localStorage.setItem('msgData', JSON.stringify(msgArr));
   
   msgInput.value = '';
-  loadMsg();
-});
+  renderMsg();
+};
 
 // 回车发送
-msgInput.addEventListener('keydown', function(e) {
-  if(e.key === 'Enter') sendBtn.click();
-});
+msgInput.onkeydown = function(e) {
+  if (e.keyCode === 13) {
+    sendBtn.click();
+  }
+};
 </script>
 
 </body>
