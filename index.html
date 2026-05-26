@@ -8,7 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.png">
   <style>
-    /* 仅添加顶部黄条 不影响任何原有内容 */
+    /* 顶部黄条 */
     .top-yellow-bar {
       position: fixed;
       top: 0;
@@ -27,23 +27,68 @@
       text-decoration: none;
       font-size: 16px;
     }
-    /* 让原有内容不被黄条挡住 */
     body {
       padding-top: 50px;
       margin: 0;
+    }
+
+    /* ========== 留言板样式 ========== */
+    .msg-box {
+      width: 90%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #666;
+      border-radius: 8px;
+    }
+    .msg-title {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      font-family: 'Rajdhani', sans-serif;
+    }
+    .input-area {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    #msgInput {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #999;
+      border-radius: 4px;
+      outline: none;
+    }
+    #sendBtn {
+      padding: 8px 18px;
+      background: #f7ba00;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    .msg-list {
+      min-height: 120px;
+      border-top: 1px solid #999;
+      padding-top: 15px;
+    }
+    .msg-item {
+      padding: 6px 0;
+      border-bottom: 1px dashed #444;
+      word-break: break-all;
     }
   </style>
 </head>
 <body>
 
-<!-- 只新增这一段：顶部黄条 -->
+<!-- 顶部黄条 -->
 <div class="top-yellow-bar">
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
 
 <audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
-</audio>
+
 
 <div class="container">
   <h1 class="glitch" data-text="CYBERPUNK 2037">CYBERPUNK 2037</h1>
@@ -54,17 +99,68 @@
     <a href="weapon.html" class="btn">WEAPON</a>
     <a href="collection.html" class="btn">COLLECTION</a>
   </div>
+
+  <!-- 留言板区域 -->
+  <div class="msg-box">
+    <div class="msg-title">留言区</div>
+    <div class="input-area">
+      <input type="text" id="msgInput" placeholder="输入留言内容...">
+      <button id="sendBtn">发送</button>
+    </div>
+    <div class="msg-list" id="msgList"></div>
+  </div>
+
   <div class="footer">
     <p>© 2037 NIGHT CITY CORPORATION · ALL RIGHTS RESERVED</p>
   </div>
 </div>
 
 <script>
+// 原有背景音乐代码
 document.addEventListener("click", function() {
   let audio = document.getElementById("bgm");
   if (audio.paused) {
     audio.play();
   }
+});
+
+// ========== 留言功能 ==========
+const msgInput = document.getElementById('msgInput');
+const sendBtn = document.getElementById('sendBtn');
+const msgList = document.getElementById('msgList');
+
+// 读取本地存储留言
+function loadMsg() {
+  let data = localStorage.getItem('cyberMsg') || '[]';
+  let arr = JSON.parse(data);
+  msgList.innerHTML = '';
+  arr.forEach(item => {
+    let div = document.createElement('div');
+    div.className = 'msg-item';
+    div.innerText = item;
+    msgList.appendChild(div);
+  });
+}
+
+// 初始化加载留言
+loadMsg();
+
+// 发送留言
+sendBtn.addEventListener('click', function() {
+  let val = msgInput.value.trim();
+  if(!val) return;
+
+  let data = JSON.parse(localStorage.getItem('cyberMsg') || '[]');
+  data.push(val);
+  localStorage.setItem('cyberMsg', JSON.stringify(data));
+  
+  msgInput.value = '';
+  loadMsg();
+});
+
+// 回车发送
+msgInput.addEventListener('keydown', function(e) {
+  if(e.key === 'Enter') sendBtn.click();
 });
 </script>
 
