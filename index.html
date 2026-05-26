@@ -31,7 +31,7 @@
       margin: 0;
     }
 
-    /* 留言板样式 简约兼容版 */
+    /* 留言板样式 */
     .msg-box {
       width: 90%;
       max-width: 600px;
@@ -79,7 +79,7 @@
   <a href="https://www.cyberpunk.net/us/en/" target="_blank">Cyberpunk</a>
 </div>
 
-<!-- 已补全audio闭合标签，语法规范 -->
+<!-- ✅ 完整闭合 audio 标签，修复语法错误 -->
 <audio id="bgm" loop preload="auto">
   <source src="music.mp3" type="audio/mpeg">
 
@@ -110,11 +110,14 @@
 </div>
 
 <script>
-// 背景音乐
-const audio = document.getElementById("bgm");
-document.addEventListener("click", function() {
-  if (audio.paused) {
-    audio.play();
+// 音频播放逻辑
+const bgm = document.getElementById("bgm");
+// 仅页面首次点击触发播放，避免重复执行
+let audioPlayed = false;
+document.addEventListener("click", function(){
+  if(!audioPlayed && bgm.paused){
+    bgm.play();
+    audioPlayed = true;
   }
 });
 
@@ -123,7 +126,7 @@ const msgInput = document.getElementById('msgInput');
 const sendBtn = document.getElementById('sendBtn');
 const msgList = document.getElementById('msgList');
 
-// 读取本地留言并渲染
+// 渲染留言
 function renderMsg() {
   let msgData = localStorage.getItem('msgData');
   let msgArr = msgData ? JSON.parse(msgData) : [];
@@ -136,10 +139,10 @@ function renderMsg() {
   });
 }
 
-// 页面初始化加载留言
+// 初始化加载留言
 renderMsg();
 
-// 点击发送留言
+// 点击发送
 sendBtn.onclick = function() {
   let content = msgInput.value.trim();
   if (content === '') return;
@@ -152,7 +155,7 @@ sendBtn.onclick = function() {
   renderMsg();
 };
 
-// 回车键发送留言
+// 回车发送
 msgInput.onkeydown = function(e) {
   if (e.keyCode === 13) {
     sendBtn.click();
